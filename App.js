@@ -9,7 +9,7 @@ import AddContactScreen from './screens/AddContactScreen';
 export default function App() {
   return (
     <View style={styles.container}>
-      <AddContactScreen />
+      <ContactScreen />
     </View>
   );
 }
