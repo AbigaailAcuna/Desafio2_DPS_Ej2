@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView,Alert } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import CustomInput from '../components/Input'
 import Button from '../components/Button'
@@ -39,7 +39,7 @@ const AddContactScreen = () => {
       setApellido('');
       setNumero('');
 
-      console.warn('Contacto agregado');
+      
       
       
       const updatedContactos = await loadContactos();

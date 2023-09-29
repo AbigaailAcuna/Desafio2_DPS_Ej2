@@ -1,7 +1,5 @@
-// SignInScreen.js
-
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomInput from '../components/Input';
 import Button from '../components/Button';
@@ -22,7 +20,10 @@ const SignInScreen = () => {
       if (correo === storedCorreo && contra === storedContra) {
         navigation.navigate("ContactosScreen");
       } else {
-        console.warn('Credenciales incorrectas');
+        Alert.alert(
+          'Credenciales incorrectas',
+          'Por favor, verifica tus credenciales e intenta de nuevo.'
+        );
       }
     } catch (error) {
       console.error('Error al iniciar sesión: ', error);

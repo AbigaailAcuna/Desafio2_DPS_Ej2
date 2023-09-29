@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView,Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomInput from '../components/Input';
 import Button from '../components/Button';
@@ -18,13 +18,19 @@ const Login = () => {
   const RegistroPress = async () => {
     try {
       if (!aceptaTerminos) {
-        console.warn('Debes aceptar los términos y condiciones');
+        Alert.alert(
+          'Acepta los términos y condiciones',
+          'Por favor, verifica e intenta de nuevo.'
+        );
         return;
       }
       await AsyncStorage.setItem('correo', correo);
       await AsyncStorage.setItem('contra', contra);
 
-      console.warn('Registro exitoso');
+      Alert.alert(
+        'Registro exitoso',
+        
+      );
       navigation.navigate("SignInScreen"); 
     } catch (error) {
       console.error('Error al registrarse: ', error);
