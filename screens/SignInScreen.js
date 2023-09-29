@@ -5,11 +5,13 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomInput from '../components/Input';
 import Button from '../components/Button';
+import { useNavigation } from "@react-navigation/native";
 
 const SignInScreen = () => {
   const [correo, setCorreo] = useState('');
   const [contra, setContra] = useState('');
   const [isContraVisible, setContraVisible] = useState(false);
+  const navigation = useNavigation();
 
   const LogInPress = async () => {
     try {
@@ -21,6 +23,7 @@ const SignInScreen = () => {
       if (correo === storedCorreo && contra === storedContra) {
         // Las credenciales son correctas, permitir el acceso a la aplicación
         console.warn('Inicio de sesión exitoso');
+        navigation.navigate("ContactosScreen");
         // Aquí puedes navegar a la pantalla principal de tu aplicación
       } else {
         // Las credenciales son incorrectas, mostrar un mensaje de error
@@ -37,7 +40,7 @@ const SignInScreen = () => {
   };
 
   const RegistroPress = () =>{
-    console.warn("registro");
+    navigation.navigate("SignUpScreen");
   }
   return (
     <ScrollView>

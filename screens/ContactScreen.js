@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get('window');
 
 const ContactosScreen = () => {
   const [contactos, setContactos] = useState([]);
+  const navigation = useNavigation();
 
-  const Add = () => {
-    console.warn("Agregar");
-}
-
-  // Cargar los contactos desde AsyncStorage al cargar la pantalla
+  // Lógica de carga de datos en useEffect
   useEffect(() => {
     const cargarContactos = async () => {
       try {
@@ -26,8 +24,14 @@ const ContactosScreen = () => {
       }
     };
 
+    // Cargar datos al montar la pantalla o cada vez que se actualice
     cargarContactos();
-  }, []);
+  }, []); // El arreglo vacío [] asegura que esto solo se ejecute al montar la pantalla
+
+  const Add = () => {
+    console.warn("Agregar");
+    navigation.navigate("AddContactScreen");
+  }
 
   return (
     <View style={styles.container}>
@@ -91,5 +95,3 @@ const styles = StyleSheet.create({
 });
 
 export default ContactosScreen;
-
-

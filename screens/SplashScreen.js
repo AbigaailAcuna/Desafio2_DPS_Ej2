@@ -17,7 +17,7 @@ const SplashScreen = ({ navigation }) => {
     }).start();
 
     setTimeout(() => {
-      navigation.replace('SignUpScreen');
+      navigation.replace('SignInScreen');
     }, 4000);
   }, [navigation, textAnim]);
 

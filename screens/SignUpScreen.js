@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomInput from '../components/Input';
 import Button from '../components/Button';
 import CheckBox from '@react-native-community/checkbox';
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
   const [correo, setCorreo] = useState('');
@@ -12,6 +13,7 @@ const Login = () => {
   const [contra2, setContra2] = useState('');
   const [aceptaTerminos, setAceptaTerminos] = useState(false);
   const [isContraVisible, setContraVisible] = useState(false);
+  const navigation = useNavigation();
 
   const RegistroPress = async () => {
     try {
@@ -29,10 +31,12 @@ const Login = () => {
 
       // Muestra un mensaje de registro exitoso
       console.warn('Registro exitoso');
+      navigation.navigate("SignInScreen"); // "AlbumDetail" es el nombre de la pantalla de detalles
       // Aquí puedes navegar a la pantalla de inicio de sesión (SignInScreen) o realizar alguna otra acción.
     } catch (error) {
       console.error('Error al registrarse: ', error);
     }
+
   };
 
   const ContraVisibility = () => {
