@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation, useIsFocused } from "@react-navigation/native";
@@ -11,7 +11,6 @@ const ContactosScreen = () => {
   const navigation = useNavigation();
   const isFocused = useIsFocused(); 
 
-  
   useEffect(() => {
     const cargarContactos = async () => {
       try {
@@ -25,13 +24,36 @@ const ContactosScreen = () => {
       }
     };
 
-    
     cargarContactos();
   }, [isFocused]);
 
   const Add = () => {
     navigation.navigate("AddContactScreen");
   }
+
+  const eliminarContacto = async (contacto) => {
+    try {
+      const nuevosContactos = contactos.filter((c) => c !== contacto);
+      await AsyncStorage.setItem('contactos', JSON.stringify(nuevosContactos));
+      setContactos(nuevosContactos);
+    } catch (error) {
+      console.error('Error al eliminar el contacto: ', error);
+    }
+  };
+
+  const confirmarEliminarContacto = (contacto) => {
+    Alert.alert(
+      'Eliminar contacto',
+      '¿Estás seguro de que deseas eliminar este contacto?',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Eliminar',
+          onPress: () => eliminarContacto(contacto),
+        },
+      ]
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -41,8 +63,16 @@ const ContactosScreen = () => {
       <ScrollView style={styles.contactList}>
         {contactos.map((contacto, index) => (
           <View key={index} style={styles.contactItem}>
-            <Text>{contacto.nombre} {contacto.apellido}</Text>
-            <Text>{contacto.numero}</Text>
+            <View style={styles.contactInfo}>
+              <Text>{contacto.nombre} {contacto.apellido}</Text>
+              <Text>{contacto.numero}</Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => confirmarEliminarContacto(contacto)}
+              style={styles.deleteButton}
+            >
+              <Icon name="trash" size={20} color="red" />
+            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>
@@ -91,6 +121,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderBottomColor: 'blue', 
     borderBottomWidth: 1, 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+  },
+  contactInfo: {
+    flex: 1, 
+  },
+  deleteButton: {
+    marginLeft: 16, 
   },
 });
 
