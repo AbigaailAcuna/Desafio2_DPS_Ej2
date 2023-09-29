@@ -5,11 +5,12 @@ import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import ContactScreen from './screens/ContactScreen';
 import AddContactScreen from './screens/AddContactScreen';
+import SplashScreen from './screens/SplashScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ContactScreen />
+      <SplashScreen />
     </View>
   );
 }
