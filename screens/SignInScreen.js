@@ -15,18 +15,13 @@ const SignInScreen = () => {
 
   const LogInPress = async () => {
     try {
-      // Obtener las credenciales almacenadas
+     
       const storedCorreo = await AsyncStorage.getItem('correo');
       const storedContra = await AsyncStorage.getItem('contra');
 
-      // Verificar las credenciales ingresadas
       if (correo === storedCorreo && contra === storedContra) {
-        // Las credenciales son correctas, permitir el acceso a la aplicación
-        console.warn('Inicio de sesión exitoso');
         navigation.navigate("ContactosScreen");
-        // Aquí puedes navegar a la pantalla principal de tu aplicación
       } else {
-        // Las credenciales son incorrectas, mostrar un mensaje de error
         console.warn('Credenciales incorrectas');
       }
     } catch (error) {
@@ -36,7 +31,6 @@ const SignInScreen = () => {
 
   const ContraVisibility = () => {
     setContraVisible(!isContraVisible);
-    console.warn('Se cambia el estado de la contraseña');
   };
 
   const RegistroPress = () =>{

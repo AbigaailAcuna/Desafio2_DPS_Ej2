@@ -26,22 +26,22 @@ const AddContactScreen = () => {
 
   const AddContact = async () => { 
     try {
-      // Agregar el nuevo contacto al arreglo
+     
       const nuevoContacto = { nombre, apellido, numero };
       const contactosArray = await loadContactos();
       contactosArray.push(nuevoContacto);
 
-      // Guardar el arreglo actualizado en AsyncStorage
+     
       await AsyncStorage.setItem('contactos', JSON.stringify(contactosArray));
 
-      // Limpiar los campos de entrada después de agregar el contacto
+    
       setNombre('');
       setApellido('');
       setNumero('');
 
       console.warn('Contacto agregado');
       
-      // Cargar la lista de contactos nuevamente antes de navegar a la pantalla de lista
+      
       const updatedContactos = await loadContactos();
       navigation.navigate("ContactSplash", { contactos: updatedContactos });
     } catch (error) {

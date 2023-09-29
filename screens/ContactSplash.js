@@ -13,10 +13,10 @@ const PassChanged = () => {
     const lottieAnim = useRef(null);
 
     useEffect(() => {
-        // Iniciar la animación de la animación Lottie
+       
         lottieAnim.current.play();
 
-        // Animación de entrada del texto (fade in)
+      
     })
 
    
@@ -54,7 +54,7 @@ const PassChanged = () => {
 const styles = StyleSheet.create({
     root: {
         alignItems: 'left',
-        justifyContent: 'flex-start', //la sube
+        justifyContent: 'flex-start',
         padding: 20,
         height: '100%',
         marginTop: 30,

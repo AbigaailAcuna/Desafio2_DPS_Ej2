@@ -9,9 +9,9 @@ const { width } = Dimensions.get('window');
 const ContactosScreen = () => {
   const [contactos, setContactos] = useState([]);
   const navigation = useNavigation();
-  const isFocused = useIsFocused(); // Verifica si la pantalla está enfocada
+  const isFocused = useIsFocused(); 
 
-  // Lógica de carga de datos en useEffect
+  
   useEffect(() => {
     const cargarContactos = async () => {
       try {
@@ -25,12 +25,11 @@ const ContactosScreen = () => {
       }
     };
 
-    // Cargar datos al montar la pantalla o cada vez que se actualice
+    
     cargarContactos();
-  }, [isFocused]); // Ahora, depende de isFocused para actualizar cuando la pantalla esté enfocada
+  }, [isFocused]);
 
   const Add = () => {
-    console.warn("Agregar");
     navigation.navigate("AddContactScreen");
   }
 

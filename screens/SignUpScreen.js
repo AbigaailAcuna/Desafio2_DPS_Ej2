@@ -17,22 +17,15 @@ const Login = () => {
 
   const RegistroPress = async () => {
     try {
-      // Verifica si el usuario ha aceptado los términos y condiciones
       if (!aceptaTerminos) {
         console.warn('Debes aceptar los términos y condiciones');
         return;
       }
-
-      // Aquí puedes realizar la validación de los campos antes de guardar las credenciales
-
-      // Guarda las credenciales en AsyncStorage
       await AsyncStorage.setItem('correo', correo);
       await AsyncStorage.setItem('contra', contra);
 
-      // Muestra un mensaje de registro exitoso
       console.warn('Registro exitoso');
-      navigation.navigate("SignInScreen"); // "AlbumDetail" es el nombre de la pantalla de detalles
-      // Aquí puedes navegar a la pantalla de inicio de sesión (SignInScreen) o realizar alguna otra acción.
+      navigation.navigate("SignInScreen"); 
     } catch (error) {
       console.error('Error al registrarse: ', error);
     }

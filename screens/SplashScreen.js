@@ -23,10 +23,7 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Superposición de fondo oscuro */}
       <View style={styles.overlay}></View>
-
-      {/* Contenido de la pantalla */}
       <View style={styles.content}>
         <LottieView
           ref={lottieAnim}
