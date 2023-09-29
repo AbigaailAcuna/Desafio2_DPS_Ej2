@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
 
 const { width } = Dimensions.get('window');
 
 const ContactosScreen = () => {
   const [contactos, setContactos] = useState([]);
   const navigation = useNavigation();
+  const isFocused = useIsFocused(); // Verifica si la pantalla está enfocada
 
   // Lógica de carga de datos en useEffect
   useEffect(() => {
@@ -26,7 +27,7 @@ const ContactosScreen = () => {
 
     // Cargar datos al montar la pantalla o cada vez que se actualice
     cargarContactos();
-  }, []); // El arreglo vacío [] asegura que esto solo se ejecute al montar la pantalla
+  }, [isFocused]); // Ahora, depende de isFocused para actualizar cuando la pantalla esté enfocada
 
   const Add = () => {
     console.warn("Agregar");
