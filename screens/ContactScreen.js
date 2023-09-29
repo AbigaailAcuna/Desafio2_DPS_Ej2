@@ -60,22 +60,28 @@ const ContactosScreen = () => {
       <View style={styles.contact}>
         <Text style={styles.title}>Contactos</Text>
       </View>
-      <ScrollView style={styles.contactList}>
-        {contactos.map((contacto, index) => (
-          <View key={index} style={styles.contactItem}>
-            <View style={styles.contactInfo}>
-              <Text>{contacto.nombre} {contacto.apellido}</Text>
-              <Text>{contacto.numero}</Text>
+      {contactos.length === 0 ? (
+        <View style={styles.noContactTextContainer}>
+          <Text style={styles.noContactText}>No hay contactos agregados</Text>
+        </View>
+      ) : (
+        <ScrollView style={styles.contactList}>
+          {contactos.map((contacto, index) => (
+            <View key={index} style={styles.contactItem}>
+              <View style={styles.contactInfo}>
+                <Text>{contacto.nombre} {contacto.apellido}</Text>
+                <Text>{contacto.numero}</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => confirmarEliminarContacto(contacto)}
+                style={styles.deleteButton}
+              >
+                <Icon name="trash" size={20} color="red" />
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              onPress={() => confirmarEliminarContacto(contacto)}
-              style={styles.deleteButton}
-            >
-              <Icon name="trash" size={20} color="red" />
-            </TouchableOpacity>
-          </View>
-        ))}
-      </ScrollView>
+          ))}
+        </ScrollView>
+      )}
       <TouchableOpacity style={styles.addButton} onPress={Add}>
         <Icon name="plus" size={20} color="white" />
       </TouchableOpacity>
@@ -129,6 +135,15 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginLeft: 16, 
+  },
+  noContactTextContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  noContactText: {
+    fontSize: 18,
+    color: 'gray',
   },
 });
 
