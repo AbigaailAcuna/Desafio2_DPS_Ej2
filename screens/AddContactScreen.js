@@ -73,7 +73,7 @@ const AddContactScreen = () => {
           text="Agregar Contacto"
           onPress={AddContact}
           type="PRIMARY"
-          size={350}
+         
         />
       </View>
     </ScrollView>
@@ -82,13 +82,14 @@ const AddContactScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
+   
     justifyContent: 'flex-start', 
     padding: 20,
     height: '100%',
     marginTop: 150,
   },
   texto: {
+    textAlign: 'center',
     fontSize: 35,
     fontWeight: 'bold',
     marginBottom: 40,
