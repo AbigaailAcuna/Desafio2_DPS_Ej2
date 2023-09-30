@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     container_PRIMARY: {
         backgroundColor: '#4D4DFF',
         marginTop:15,
-        borderRadius:20
+        borderRadius:20,
+        
     },
     text: {
         color: 'white',

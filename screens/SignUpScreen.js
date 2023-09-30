@@ -89,7 +89,7 @@ const Login = () => {
           text="Registrarse"
           onPress={RegistroPress}
           type="PRIMARY"
-          size={350} />
+           />
       </View>
     </ScrollView>
   );

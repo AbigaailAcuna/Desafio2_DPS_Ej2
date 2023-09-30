@@ -58,7 +58,11 @@ const SignInScreen = () => {
           onPress={ContraVisibility}
         />
 
-        <Button text="Login" onPress={LogInPress} type="PRIMARY" size={350} />
+        <Button 
+        text="Login" 
+        onPress={LogInPress} 
+        type="PRIMARY" 
+         />
 
         <Button text="¿No tienes cuenta? Registrate" onPress={RegistroPress} type="TERTIARY" />
       </View>
@@ -68,13 +72,13 @@ const SignInScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 20,
     height: '100%',
     marginTop: 150,
   },
   texto: {
+    textAlign:'center',
     fontSize: 35,
     fontWeight: 'bold',
     marginBottom: 40,
